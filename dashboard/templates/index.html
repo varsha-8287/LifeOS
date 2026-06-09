@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>LifeOS</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Quicksand:wght@400;500&family=Dancing+Script:wght@500&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="overlay">
+
+        <div class="hero">
+
+            <h1>LifeOS</h1>
+
+            <button id="theme-toggle">
+                𓇼
+            </button>
+
+        </div>
+
+        <p class="quote">
+            "The tide always returns."
+        </p>
+
+        <div class="cards">
+
+            {% for task in tasks %}
+
+            <div class="card">
+
+                <h2>{{ task.icon }} {{ task.task }}</h2>
+
+                <p>{{ task.completed }} / {{ task.target }}</p>
+
+                <div class="progress-container">
+
+                    <div
+                        class="progress-bar"
+                        style="width: {{ task.progress }}%;">
+                    </div>
+
+                </div>
+
+                <span>{{ task.progress }}%</span>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</body>
+
+<script src="{{ url_for(
+'static',
+filename='js/theme.js'
+) }}"></script>
+
+</html>
